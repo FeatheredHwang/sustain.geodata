@@ -1,6 +1,6 @@
 import logging
 import os, sys
-from pathlib import Path
+import webbrowser
 import json
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QLabel, QVBoxLayout, QTextEdit, QMessageBox, QFileDialog
 from PyQt5.QtCore import Qt
@@ -30,18 +30,26 @@ class MyApp(QWidget):
         self.setWindowTitle("Amap Favs (高德地图收藏夹位置) to Excel")  # Set window title
         self.setWindowState(Qt.WindowMaximized)  # Maximize the window
 
+        self.openurl_button = QPushButton("Open URL", self)
+        self.openurl_button.clicked.connect(self.open_url)
         self.textbox = QTextEdit("Paste the Amap favs to convert", self)
-        self.button = QPushButton("Click Me", self)
+        self.button = QPushButton("Submit Text", self)
         self.button.clicked.connect(self.submit_text)  # Connect the button click to a function
         self.label = QLabel("Input region", self)
 
         # Create a QVBoxLayout (vertical layout to organize widgets)
         layout = QVBoxLayout()
+        layout.addWidget(self.openurl_button)
         layout.addWidget(self.textbox)
         layout.addWidget(self.button)
         layout.addWidget(self.label)
 
         self.setLayout(layout)  # Set the layout for the window
+
+    def open_url(self):
+        url = "https://www.amap.com/service/fav/getFav?ver="
+        # Open the URL in the default web browser
+        webbrowser.open(url)
 
     def submit_text(self):
         # self.label.setText("Button Clicked!")  # Update the label text when the button is clicked
