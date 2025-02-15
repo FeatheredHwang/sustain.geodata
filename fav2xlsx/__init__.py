@@ -54,18 +54,21 @@ class MyApp(QWidget):
             return
 
     @staticmethod
-    def show_warning(msg: str):
+    def show_warning(text: str):
+        logger.warning(text)
         # Create a message box
         msg = QMessageBox()
         msg.setIcon(QMessageBox.Information)  # You can use different icons like Information, Warning, Critical, etc.
-        msg.setText(msg)  # Message text
+        msg.setText(text)  # Message text
         msg.setWindowTitle("Warning")  # Window title
         msg.setStandardButtons(QMessageBox.Ok)  # Buttons to show (Ok)
-        logger.warning(msg)
+        # Show the message box and capture the user's response
+        msg.exec_()
 
-    def show_info(self, msg:str):
+    def show_info(self, text: str):
+        logger.info(text)
         # Show message in the bottom label
-        self.label.setText(msg)
+        self.label.setText(text)
 
     def parse_amap(self, amap_fav: str):
         # check if input valid
