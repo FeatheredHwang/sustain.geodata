@@ -1,6 +1,15 @@
 ########################        Developing Environment          ########################
-
+# The openpyxl library allows for precise control of individual cells.
+openpyxl
 
 ########################            Developing Tools            ########################
+# PyQt is a powerful set of Python bindings for the Qt framework,
+# which is widely used for building graphical user interfaces (GUIs).
+# PyQt5 is one of the most commonly used versions.
+pyqt5
 
+# Qt Designer tool helps in designing GUIs visually
+pyqt5-tools
 
+# To package a Python program into an executable (.exe) file
+pyinstaller
